@@ -1,0 +1,1 @@
+g++ -Iinclude -Iinclude/blockchain -Isrc/core -Isrc/utils src/main/main.cpp src/core/CryptoUtils.cpp src/core/Blockchain.cpp src/core/Block.cpp -o blockchain.exe

@@ -1,0 +1,24 @@
+cmake_minimum_required(VERSION 3.10)
+project(BlockchainProject VERSION 1.0 LANGUAGES CXX)
+
+set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+
+# include dirs
+include_directories(${CMAKE_SOURCE_DIR}/include)
+include_directories(${CMAKE_SOURCE_DIR}/utils)
+
+# sources
+set(SRC_CORE
+    src/core/Block.cpp
+    src/core/Blockchain.cpp
+    src/core/CryptoUtils.cpp
+)
+
+add_executable(BlockchainDemo src/main/main.cpp ${SRC_CORE})
+target_include_directories(BlockchainDemo PRIVATE ${CMAKE_SOURCE_DIR}/include ${CMAKE_SOURCE_DIR}/utils)
+set_target_properties(BlockchainDemo PROPERTIES RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin)
+
+# tests
+enable_testing()
+add_subdirectory(tests)
